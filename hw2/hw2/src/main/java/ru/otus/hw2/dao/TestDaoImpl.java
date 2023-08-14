@@ -1,7 +1,6 @@
 package ru.otus.hw2.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import ru.otus.hw2.config.AppConfig;
 import ru.otus.hw2.domain.Test;
 import ru.otus.hw2.mapper.TestMapper;
@@ -10,19 +9,19 @@ import ru.otus.hw2.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
-@Repository
+@Component
 public class TestDaoImpl implements TestDao {
 
     private final AppConfig appConfig;
 
     private final TestMapper testMapper;
 
-    @Autowired
     public TestDaoImpl(AppConfig appConfig, TestMapper testMapper) {
         this.appConfig = appConfig;
         this.testMapper = testMapper;
     }
 
+    @Override
     public Test getTest() {
         try {
             File file = FileUtils.getFile(appConfig.getPath());

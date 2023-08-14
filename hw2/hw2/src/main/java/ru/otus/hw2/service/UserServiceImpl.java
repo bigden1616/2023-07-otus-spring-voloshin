@@ -1,14 +1,12 @@
 package ru.otus.hw2.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.otus.hw2.domain.Answer;
 import ru.otus.hw2.domain.Task;
 import ru.otus.hw2.domain.Test;
 import ru.otus.hw2.domain.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -17,7 +15,6 @@ public class UserServiceImpl implements UserService {
 
     private User user;
 
-    @Autowired
     public UserServiceImpl(TestService testService) {
         this.testService = testService;
     }
@@ -39,29 +36,45 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void runTest() {
-        Scanner scanner = new Scanner(System.in);
         for (Task task : user.getTest().tasks()) {
-            System.out.println("Question:");
-            System.out.println(task.question().question());
-            System.out.println();
-            System.out.println("A: " + task.answer().answers().get(0));
-            System.out.println("B: " + task.answer().answers().get(1));
-            System.out.println("C: " + task.answer().answers().get(2));
-            System.out.println("D: " + task.answer().answers().get(3));
-            System.out.println();
-
-            System.out.println("Your answer: ");
-            String[] answer = scanner.next().split("/");
-            if (Arrays.equals(task.answer().correctAnswer(), answer)) {
-                user.setCorrectCount(user.getCorrectCount() + 1);
-            }
-            user.getUserAnswers().add(answer);
-            System.out.println();
+            printQuestion(task.question().question());
+            printAnswers(task.answers());
+            printAnswer(task.answers());
         }
     }
 
     @Override
     public void finishTest() {
         System.out.println(user.getCorrectCount());
+    }
+
+    private void printQuestion(String question) {
+        System.out.println("Question:");
+        System.out.println(question);
+        System.out.println();
+    }
+
+    private void printAnswers(List<Answer> answers) {
+        for (int i = 0; i < answers.size(); i++) {
+            System.out.println(i + 1 + ": " + answers.get(i).answer());
+        }
+        System.out.println();
+    }
+
+    private void printAnswer(List<Answer> answers) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Your answer: ");
+        HashSet<String> yourAnswers = new HashSet<>(Arrays.asList(scanner.next().split("/")));
+        HashSet<String> correctAnswers = new HashSet<>();
+        for (int i = 0; i < answers.size(); i++) {
+            if (answers.get(i).isCorrect()) {
+                correctAnswers.add(Integer.toString(i + 1));
+            }
+        }
+
+        if (correctAnswers.equals(yourAnswers)) {
+            user.setCorrectCount(user.getCorrectCount() + 1);
+        }
+        System.out.println();
     }
 }

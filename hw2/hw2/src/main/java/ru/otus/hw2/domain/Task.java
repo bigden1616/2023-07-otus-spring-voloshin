@@ -1,4 +1,6 @@
 package ru.otus.hw2.domain;
 
-public record Task(Question question, Answer answer) {
+import java.util.List;
+
+public record Task(Question question, List<Answer> answers, boolean isMultiChoice) {
 }

@@ -1,6 +1,6 @@
-question,A,B,C,D,isMultichoice,correct
-Which of the following statements are true?,An instance variable of type int defaults to null,An instance variable of type String defaults to null,An instance variable of type double defaults to 0.0,An instance variable of type int defaults to 0.0,true,B/C
-Select a statement that is true?,A local variable of type float defaults to 0,A local variable of type Object defaults to null,A local variable of type float defaults to 0.0,None of the above,false,D
-Which of the following are true?,An instance variable of type boolean defaults to false,An instance variable of type boolean defaults to true,An instance variable of type boolean defaults to null,An instance variable of type int defaults to 0,true,A/D
-Which of the following are true?,Javac compiles a .class file into a .java file,Javac compiles a .java file into a .bytecode file,Javac compiles a .java file into a .class file,Java takes the name of the class as a parameter,true,C/D
-Which of the following are true statements?,Java allows operator overloading,Java code compiled on Windows can run on Linux,Java is an object-oriented language,Java is a functional programming language,true,B/C
+question,1,2,3,4,isMultichoice,correct
+Which of the following statements are true?,An instance variable of type int defaults to null,An instance variable of type String defaults to null,An instance variable of type double defaults to 0.0,An instance variable of type int defaults to 0.0,true,2/3
+Select a statement that is true?,A local variable of type float defaults to 0,A local variable of type Object defaults to null,A local variable of type float defaults to 0.0,None of the above,false,4
+Which of the following are true?,An instance variable of type boolean defaults to false,An instance variable of type boolean defaults to true,An instance variable of type boolean defaults to null,An instance variable of type int defaults to 0,true,1/4
+Which of the following are true?,Javac compiles a .class file into a .java file,Javac compiles a .java file into a .bytecode file,Javac compiles a .java file into a .class file,Java takes the name of the class as a parameter,true,3/4
+Which of the following are true statements?,Java allows operator overloading,Java code compiled on Windows can run on Linux,Java is an object-oriented language,Java is a functional programming language,true,2/3

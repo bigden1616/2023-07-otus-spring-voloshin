@@ -12,7 +12,8 @@ public class TestMapperImplTest {
     @org.junit.jupiter.api.Test
     public void testReadFromFile() {
         // given
-        var testMapper = new TestMapperImpl();
+        var taskMapper = new TaskMapperImpl();
+        var testMapper = new TestMapperImpl(taskMapper);
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("tasks.csv").getFile());
 
