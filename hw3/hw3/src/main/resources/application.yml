@@ -1,0 +1,12 @@
+test:
+  csv:
+    path: data
+    fileName: tasks.csv
+
+spring:
+  messages:
+    basename: messages
+    fallback-to-system-locale: false
+
+localization:
+  locale: en-EN
