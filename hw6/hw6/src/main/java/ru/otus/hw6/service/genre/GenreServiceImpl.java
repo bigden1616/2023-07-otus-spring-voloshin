@@ -1,9 +1,10 @@
 package ru.otus.hw6.service.genre;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
-import ru.otus.hw6.dao.genre.GenreDao;
+import ru.otus.hw6.repository.genre.GenreRepository;
 import ru.otus.hw6.domain.Genre;
 
 import java.util.List;
@@ -13,22 +14,25 @@ import java.util.List;
 @Log4j2
 public class GenreServiceImpl implements GenreService {
 
-    private final GenreDao genreDao;
+    private final GenreRepository genreRepository;
 
+    @Transactional
     @Override
     public List<Genre> getAllGenres() {
-        return genreDao.getAll();
+        return genreRepository.getAll();
     }
 
+    @Transactional
     @Override
     public Genre addGenre(String name) {
         var genre = new Genre(0, name);
-        var id = genreDao.insert(genre);
-        return genreDao.getById(id);
+        var id = genreRepository.insert(genre);
+        return genreRepository.getById(id);
     }
 
+    @Transactional
     @Override
     public Genre getGenre(long id) {
-        return genreDao.getById(id);
+        return genreRepository.getById(id);
     }
 }

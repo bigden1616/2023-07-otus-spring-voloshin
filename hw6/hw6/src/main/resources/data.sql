@@ -12,3 +12,7 @@ values ('Сказка о царе Салтане', 1, 1),
        ('Медный всадник', 1, 2),
        ('Чистый код', 2, 3)
 ;
+insert into comments (text, book_id)
+values ('Hello', 1),
+       ('World', 1),
+       ('Good Book', 2)

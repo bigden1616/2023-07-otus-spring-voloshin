@@ -1,10 +1,10 @@
-package ru.otus.hw6.dao.book;
+package ru.otus.hw6.repository.book;
 
 import ru.otus.hw6.domain.Book;
 
 import java.util.List;
 
-public interface BookDao {
+public interface BookRepository {
 
     List<Book> getAll();
 

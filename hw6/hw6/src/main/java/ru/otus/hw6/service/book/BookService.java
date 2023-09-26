@@ -1,8 +1,6 @@
 package ru.otus.hw6.service.book;
 
-import ru.otus.hw6.domain.Author;
 import ru.otus.hw6.domain.Book;
-import ru.otus.hw6.domain.Genre;
 
 import java.util.List;
 
@@ -12,9 +10,9 @@ public interface BookService {
 
     Book getBook(long id);
 
-    Book addBook(String title, Author author, Genre genre);
+    Book addBook(String title, long authorId, long genreId);
 
-    Book modifyBook(long id, String newName, Author newAuthor, Genre newGenre);
+    Book modifyBook(long id, String newName, long authorId, long genreId);
 
     void deleteBook(long id);
 }

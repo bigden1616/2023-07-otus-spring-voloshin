@@ -6,19 +6,13 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 import ru.otus.hw6.converter.BookToStringConverter;
 import ru.otus.hw6.converter.BooksToStringConverter;
-import ru.otus.hw6.service.author.AuthorService;
 import ru.otus.hw6.service.book.BookService;
-import ru.otus.hw6.service.genre.GenreService;
 
 @ShellComponent
 @RequiredArgsConstructor
 public class BookCommands {
 
     private final BookService bookService;
-
-    private final GenreService genreService;
-
-    private final AuthorService authorService;
 
     private final BookToStringConverter bookToStringConverter;
 
@@ -38,9 +32,7 @@ public class BookCommands {
 
     @ShellMethod(value = "Add book", key = {"add book", "ab"})
     public String addBook(@ShellOption String title, @ShellOption long authorId, @ShellOption long genreId) {
-        var author = authorService.getAuthor(authorId);
-        var genre = genreService.getGenre(genreId);
-        var book = bookService.addBook(title, author, genre);
+        var book = bookService.addBook(title, authorId, genreId);
         return bookToStringConverter.convert(book);
     }
 
@@ -51,9 +43,7 @@ public class BookCommands {
             @ShellOption long authorId,
             @ShellOption long genreId
     ) {
-        var author = authorService.getAuthor(authorId);
-        var genre = genreService.getGenre(genreId);
-        var book = bookService.modifyBook(bookId, title, author, genre);
+        var book = bookService.modifyBook(bookId, title, authorId, genreId);
         return bookToStringConverter.convert(book);
     }
 

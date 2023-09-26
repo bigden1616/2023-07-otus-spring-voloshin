@@ -9,17 +9,17 @@ public class BookToStringConverter implements Converter<Book, String> {
     @Override
     public String convert(Book book) {
         StringBuilder sb = new StringBuilder();
-        sb.append("Id: ").append(book.id())
-                .append("\tTitle: ").append(book.title());
+        sb.append("Id: ").append(book.getId())
+                .append("\tTitle: ").append(book.getTitle());
 
-        sb.append("\tAuthor: {Id: ").append(book.author().id())
-                .append(", First Name: ").append(book.author().firstName())
-                .append(", Last Name: ").append(book.author().lastName())
+        sb.append("\tAuthor: {Id: ").append(book.getAuthor().getId())
+                .append(", First Name: ").append(book.getAuthor().getFirstName())
+                .append(", Last Name: ").append(book.getAuthor().getLastName())
                 .append("}");
 
 
-        sb.append("\tGenre: {Id: ").append(book.genre().id())
-                .append(", Name: ").append(book.genre().name())
+        sb.append("\tGenre: {Id: ").append(book.getGenre().getId())
+                .append(", Name: ").append(book.getGenre().getName())
                 .append("}");
 
         return sb.toString();

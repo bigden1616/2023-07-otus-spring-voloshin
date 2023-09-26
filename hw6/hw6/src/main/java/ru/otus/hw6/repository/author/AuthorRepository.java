@@ -1,10 +1,10 @@
-package ru.otus.hw6.dao.author;
+package ru.otus.hw6.repository.author;
 
 import ru.otus.hw6.domain.Author;
 
 import java.util.List;
 
-public interface AuthorDao {
+public interface AuthorRepository {
 
     List<Author> getAll();
 

@@ -23,3 +23,11 @@ create table books
     foreign key (author_id) references authors(id),
     foreign key (genre_id) references genres(id)
 );
+
+drop table if exists comments;
+create table comments
+(
+    id        BIGINT auto_increment primary key,
+    text    varchar(255),
+    book_id long
+)

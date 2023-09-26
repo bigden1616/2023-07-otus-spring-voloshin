@@ -8,9 +8,7 @@ import ru.otus.hw6.domain.Genre;
 public class GenreToStringConverter implements Converter<Genre, String> {
     @Override
     public String convert(Genre genre) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Id: ").append(genre.id())
-                .append("\tName: ").append(genre.name());
-        return sb.toString();
+        return "Id: " + genre.getId() +
+                "\tName: " + genre.getName();
     }
 }
