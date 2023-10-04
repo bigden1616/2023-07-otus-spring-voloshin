@@ -21,14 +21,6 @@ class CommentRepositoryJpaTest {
     private TestEntityManager em;
 
     @Test
-    void getCommentsForBook() {
-        var book = em.find(Book.class, 1);
-        var comments = repository.getCommentsForBook(book);
-
-        assertThat(comments.size()).isEqualTo(2);
-    }
-
-    @Test
     void getById() {
         var book = em.find(Book.class, 1);
         var expectedComment = new Comment(1, "Hello", book);

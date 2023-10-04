@@ -1,6 +1,6 @@
 package ru.otus.hw6.service.genre;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class GenreServiceImpl implements GenreService {
 
     private final GenreRepository genreRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public List<Genre> getAllGenres() {
         return genreRepository.getAll();
@@ -30,7 +30,7 @@ public class GenreServiceImpl implements GenreService {
         return genreRepository.getById(id);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Genre getGenre(long id) {
         return genreRepository.getById(id);

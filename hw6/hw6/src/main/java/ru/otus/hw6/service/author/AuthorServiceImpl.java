@@ -1,6 +1,6 @@
 package ru.otus.hw6.service.author;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepository authorDao;
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public List<Author> getAllAuthors() {
         return authorDao.getAll();
@@ -30,7 +30,7 @@ public class AuthorServiceImpl implements AuthorService {
         return authorDao.getById(id);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Author getAuthor(long id) {
         return authorDao.getById(id);

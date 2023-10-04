@@ -3,12 +3,12 @@ package ru.otus.hw6.repository.author;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import jakarta.persistence.EntityManager;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import ru.otus.hw6.domain.Author;
 
 import java.util.List;
 
-@Repository
+@Component
 @RequiredArgsConstructor
 public class AuthorRepositoryJpa implements AuthorRepository {
 

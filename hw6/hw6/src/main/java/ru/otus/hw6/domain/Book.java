@@ -40,15 +40,15 @@ public class Book {
 
     @NonNull
     @JoinColumn(name = "author_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Author author;
 
     @NonNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "book", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "book", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @BatchSize(size = 50)
     private List<Comment> comments;
 

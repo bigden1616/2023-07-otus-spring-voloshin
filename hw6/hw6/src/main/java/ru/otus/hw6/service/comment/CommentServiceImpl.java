@@ -1,6 +1,6 @@
 package ru.otus.hw6.service.comment;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -19,14 +19,14 @@ public class CommentServiceImpl implements CommentService {
 
     private final BookService bookService;
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public List<Comment> getCommentsForBook(long bookId) {
         var book = bookService.getBook(bookId);
-        return commentRepository.getCommentsForBook(book);
+        return book.getComments();
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Comment getById(long id) {
         return commentRepository.getById(id);

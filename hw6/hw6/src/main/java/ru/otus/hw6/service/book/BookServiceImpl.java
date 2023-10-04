@@ -1,6 +1,6 @@
 package ru.otus.hw6.service.book;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -22,13 +22,13 @@ public class BookServiceImpl implements BookService {
 
     private final AuthorService authorService;
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public List<Book> getAllBooks() {
         return bookDao.getAll();
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Book getBook(long id) {
         return bookDao.getById(id);
