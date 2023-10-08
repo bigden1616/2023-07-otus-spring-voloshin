@@ -23,7 +23,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<Comment> getCommentsForBook(long bookId) {
         var book = bookService.getBook(bookId);
-        return book.getComments();
+        return book.getComments().stream().toList();
     }
 
     @Transactional(readOnly = true)
