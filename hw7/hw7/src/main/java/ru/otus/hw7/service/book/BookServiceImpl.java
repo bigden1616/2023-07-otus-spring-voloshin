@@ -40,8 +40,7 @@ public class BookServiceImpl implements BookService {
         var author = authorService.getAuthor(authorId);
         var genre = genreService.getGenre(genreId);
         var book = new Book(0, title, author, genre);
-        var id = bookDao.save(book).getId();
-        return bookDao.findById(id).orElse(null);
+        return bookDao.save(book);
     }
 
     @Transactional
@@ -50,11 +49,9 @@ public class BookServiceImpl implements BookService {
         var newAuthor = authorService.getAuthor(authorId);
         var newGenre = genreService.getGenre(genreId);
         var book = new Book(id, newName, newAuthor, newGenre);
-        bookDao.save(book);
-        return bookDao.findById(id).get();
+        return bookDao.save(book);
     }
 
-    @Transactional
     @Override
     public void deleteBook(long id) {
         bookDao.deleteById(id);

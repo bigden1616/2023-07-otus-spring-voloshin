@@ -22,12 +22,10 @@ public class AuthorServiceImpl implements AuthorService {
         return authorDao.findAll();
     }
 
-    @Transactional
     @Override
     public Author addAuthor(String firstName, String lastName) {
         var author = new Author(0, firstName, lastName);
-        var id = authorDao.save(author).getId();
-        return authorDao.findById(id).orElse(null);
+        return authorDao.save(author);
     }
 
     @Transactional(readOnly = true)

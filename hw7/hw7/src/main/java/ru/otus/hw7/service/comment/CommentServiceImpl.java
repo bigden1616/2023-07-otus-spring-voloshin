@@ -37,7 +37,6 @@ public class CommentServiceImpl implements CommentService {
     public Comment addComment(long bookId, String text) {
         var book = bookService.getBook(bookId);
         var comment = new Comment(0, text, book);
-        var id = commentRepository.save(comment).getId();
-        return commentRepository.findById(id).orElse(null);
+        return commentRepository.save(comment);
     }
 }

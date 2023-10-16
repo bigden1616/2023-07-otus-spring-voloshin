@@ -22,12 +22,10 @@ public class GenreServiceImpl implements GenreService {
         return genreRepository.findAll();
     }
 
-    @Transactional
     @Override
     public Genre addGenre(String name) {
         var genre = new Genre(0, name);
-        var id = genreRepository.save(genre).getId();
-        return genreRepository.findById(id).orElse(null);
+        return genreRepository.save(genre);
     }
 
     @Transactional(readOnly = true)
